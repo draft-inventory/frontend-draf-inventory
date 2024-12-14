@@ -2,6 +2,18 @@
   class="fixed bg-gray-900 text-white h-full w-64 p-5 transition-transform duration-300"
   [ngClass]="{ '-translate-x-64': !isOpen, 'translate-x-0': isOpen }"
 >
-  <h2 class="text-2xl font-bold mb-5">Draft<span class="text-blue-500">Inventory</span></h2>
-  <app-list-options></app-list-options>
+  <h2 class="text-2xl font-bold mb-5">
+    Draft<span class="text-blue-500">Inventory</span>
+  </h2>
+  <ul>
+    <li *ngFor="let option of options" class="mb-2">
+      <a
+        [routerLink]="option.route"
+        routerLinkActive="text-blue-500 font-bold"
+        class="flex items-center gap-2 hover:text-blue-400"
+      >
+        <span>{{ option.icon }}</span> {{ option.name }}
+      </a>
+    </li>
+  </ul>
 </div>
