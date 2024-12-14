@@ -1,0 +1,8 @@
+<li
+  (click)="select.emit()"
+  [class.bg-blue-600]="isSelected"
+  class="flex items-center px-4 py-2 rounded cursor-pointer hover:bg-gray-700"
+>
+  <span class="mr-3">{{ icon }}</span>
+  <span>{{ name }}</span>
+</li>

@@ -1,8 +1,15 @@
+<app-navbar (sidebarToggle)="toggleSidebar()"></app-navbar>
+
 <div class="flex">
-    <div class="flex-1">
-        <app-navbar></app-navbar>
-        <div class="p-4">
-            <h1 class="text-2xl">Content Area</h1>
-        </div>
-    </div>
+  <!-- Sidebar -->
+  <app-sidebar [isOpen]="sidebarOpen"></app-sidebar>
+
+  <!-- Contenido Principal -->
+  <div
+    class="transition-all duration-300"
+    [ngClass]="{ 'ml-64': sidebarOpen, 'ml-0': !sidebarOpen }"
+    class="flex-1 bg-gray-100 p-5"
+  >
+    <h1 class="text-3xl font-bold">Contenido Principal</h1>
+  </div>
 </div>
