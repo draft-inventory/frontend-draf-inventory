@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
+  standalone: true
 })
 export class NavbarComponent {
   @Output() sidebarToggle = new EventEmitter<void>();

@@ -5,8 +5,9 @@ import { OptionsComponent } from '../options/options.component';
 
 @Component({
   selector: 'app-list-options',
-  imports: [OptionsComponent,CommonModule],
+  imports: [OptionsComponent, CommonModule],
   templateUrl: './list-options.component.html',
+  standalone: true,
   styleUrl: './list-options.component.css'
 })
 export class ListOptionsComponent {
