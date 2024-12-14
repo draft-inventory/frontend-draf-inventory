@@ -1,0 +1,10 @@
+<ul>
+    <app-options
+      *ngFor="let option of options"
+      [name]="option.name"
+      [icon]="option.icon"
+      [isSelected]="selectedOption === option.name"
+      (select)="onSelect(option.name)"
+    ></app-options>
+  </ul>
+  

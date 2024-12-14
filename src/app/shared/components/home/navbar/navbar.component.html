@@ -1,49 +1,38 @@
-<mat-toolbar class="flex items-center justify-between bg-red-400 dark:bg-sky-950 h-16">
-    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
-        <span class="material-icons">menu</span>
-        aqiuo
+<nav class="bg-gray-800 text-white px-4 py-3 flex items-center justify-between">
+    <!-- Botón de toggle del Sidebar (Izquierda) -->
+    <button (click)="toggleSidebar()" class="text-xl focus:outline-none">
+      ☰
     </button>
-    <span class="text-lg font-bold text-blue-400">Logo</span>
-    <div class="flex items-center gap-4">
-        <button mat-icon-button>
-            <span class="material-icons">notifications</span>
-        </button>
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-500 text-white flex items-center justify-center rounded-full font-bold">
-                {{ userInitials }}
-            </div>
-            <span class="text-sm">{{ userName }}</span>
-            <button mat-icon-button [matMenuTriggerFor]="userMenu">
-                <span class="material-icons">account_circle</span>
-            </button>
+  
+    <!-- Contenedor derecho -->
+    <div class="flex items-center space-x-6">
+      <!-- Icono de Notificaciones -->
+      <div class="relative">
+        <span class="text-2xl cursor-pointer">🔔</span>
+        <span class="absolute top-0 right-0 bg-red-500 text-xs rounded-full px-1">6</span>
+      </div>
+  
+       <!-- Selector de Modo Oscuro/Claro -->
+    <select
+    (change)="onThemeChange($event)"
+    class="bg-gray-700 text-white rounded px-2 py-1 focus:outline-none dark:bg-gray-800"
+  >
+    <option value="light">☀️ Claro</option>
+    <option value="dark">🌙 Oscuro</option>
+  </select>
+  
+      <!-- Perfil del Usuario -->
+      <div class="flex items-center space-x-2 cursor-pointer">
+        <img
+          src="https://via.placeholder.com/32"
+          alt="Profile"
+          class="w-8 h-8 rounded-full"
+        />
+        <div>
+          <p class="text-sm font-semibold">Moni Roy</p>
+          <p class="text-xs text-gray-400">Admin</p>
         </div>
+      </div>
     </div>
-    <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="myAccount()">Mi Cuenta</button>
-        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
-    </mat-menu>
-</mat-toolbar>
-
-<mat-sidenav-container class="h-screen">
-    <mat-sidenav #sidenav [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)" class="w-64">
-        <nav class="p-4">
-            <ul>
-                <mat-expansion-panel *ngFor="let modulo of modulosMenus" [expanded]="true">
-                    <mat-expansion-panel-header>
-                        <span>{{ modulo.modulo }}</span>
-                    </mat-expansion-panel-header>
-                    <ng-container *ngFor="let menu of modulo.menus">
-                        <mat-list-item (click)="navigateTo(menu.nombre)"
-                            class="cursor-pointer hover:bg-gray-100 rounded p-2">
-                            <span>{{ menu.nombre }}</span>
-                        </mat-list-item>
-                    </ng-container>
-                </mat-expansion-panel>
-            </ul>
-        </nav>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+  </nav>
+  
