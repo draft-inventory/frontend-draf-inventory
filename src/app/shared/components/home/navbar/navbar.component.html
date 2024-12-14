@@ -1,0 +1,49 @@
+<mat-toolbar class="flex items-center justify-between bg-red-400 dark:bg-sky-950 h-16">
+    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
+        <span class="material-icons">menu</span>
+        aqiuo
+    </button>
+    <span class="text-lg font-bold text-blue-400">Logo</span>
+    <div class="flex items-center gap-4">
+        <button mat-icon-button>
+            <span class="material-icons">notifications</span>
+        </button>
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-blue-500 text-white flex items-center justify-center rounded-full font-bold">
+                {{ userInitials }}
+            </div>
+            <span class="text-sm">{{ userName }}</span>
+            <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <span class="material-icons">account_circle</span>
+            </button>
+        </div>
+    </div>
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="myAccount()">Mi Cuenta</button>
+        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="h-screen">
+    <mat-sidenav #sidenav [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)" class="w-64">
+        <nav class="p-4">
+            <ul>
+                <mat-expansion-panel *ngFor="let modulo of modulosMenus" [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <span>{{ modulo.modulo }}</span>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngFor="let menu of modulo.menus">
+                        <mat-list-item (click)="navigateTo(menu.nombre)"
+                            class="cursor-pointer hover:bg-gray-100 rounded p-2">
+                            <span>{{ menu.nombre }}</span>
+                        </mat-list-item>
+                    </ng-container>
+                </mat-expansion-panel>
+            </ul>
+        </nav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
