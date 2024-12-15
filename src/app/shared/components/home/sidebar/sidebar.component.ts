@@ -14,10 +14,13 @@ export class SidebarComponent {
 
   options = [
     { name: 'Dashboard', icon: '🏠', route: '/dashboard' },
-    { name: 'Products', icon: '📦', route: '/products/list' },
-    { name: 'Favorites', icon: '❤️', route: '#' },
-    { name: 'Inbox', icon: '📨', route: '#' },
-    { name: 'Order Lists', icon: '📝', route: '#' },
-    { name: 'Product Stock', icon: '📊', route: '#' },
+    { name: 'Productos', icon: '📦', route: '/products/list' },
+    { name: 'Categorias', icon: '📂', route: '#' },
+    { name: 'Stock', icon: '📊', route: '#' },
+    { name: 'Analisis', icon: '📈', route: '#' },
+    { name: 'Ventas', icon: '💸', route: '#' },
+    { name: 'Proveedores', icon: '👨‍🌾', route: '#'},
+    { name: 'Configuración', icon: '⚙️', route: '#' },
+    { name: 'Cerrar Sesión', icon: '🚪', route: '#' },
   ];
 }
