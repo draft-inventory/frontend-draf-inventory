@@ -1,38 +1,31 @@
-<nav class="bg-gray-800 text-white px-4 py-3 flex items-center justify-between">
-    <!-- Botón de toggle del Sidebar (Izquierda) -->
-    <button (click)="toggleSidebar()" class="text-xl focus:outline-none">
-      ☰
-    </button>
-  
-    <!-- Contenedor derecho -->
-    <div class="flex items-center space-x-6">
-      <!-- Icono de Notificaciones -->
-      <div class="relative">
-        <span class="text-2xl cursor-pointer">🔔</span>
-        <span class="absolute top-0 right-0 bg-red-500 text-xs rounded-full px-1">6</span>
-      </div>
-  
-       <!-- Selector de Modo Oscuro/Claro -->
-    <select
-    (change)="onThemeChange($event)"
-    class="bg-gray-700 text-white rounded px-2 py-1 focus:outline-none dark:bg-gray-800"
-  >
-    <option value="light">☀️ Claro</option>
-    <option value="dark">🌙 Oscuro</option>
-  </select>
-  
-      <!-- Perfil del Usuario -->
-      <div class="flex items-center space-x-2 cursor-pointer">
-        <img
-          src="https://via.placeholder.com/32"
-          alt="Profile"
-          class="w-8 h-8 rounded-full"
-        />
-        <div>
-          <p class="text-sm font-semibold">Moni Roy</p>
-          <p class="text-xs text-gray-400">Admin</p>
-        </div>
+<nav class="px-4 py-3 flex items-center justify-between bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText">
+  <!-- Botón de toggle del Sidebar -->
+  <button (click)="toggleSidebar()" class="text-xl focus:outline-none">
+    ☰
+  </button>
+
+  <!-- Contenedor derecho -->
+  <div class="flex items-center space-x-6">
+    <!-- Icono de Notificaciones -->
+    <div class="relative">
+      <span class="text-2xl cursor-pointer">🔔</span>
+      <span class="absolute top-0 right-0 bg-red-500 text-xs rounded-full px-1">6</span>
+    </div>
+
+    <!-- Selector de Modo Oscuro/Claro -->
+    <select (change)="onThemeChange($event)" [value]="currentTheme"
+      class="rounded px-2 py-1 focus:outline-none bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText">
+      <option value="light">☀️ Claro</option>
+      <option value="dark">🌙 Oscuro</option>
+    </select>
+
+    <!-- Perfil del Usuario -->
+    <div class="flex items-center space-x-2 cursor-pointer">
+      <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full" />
+      <div>
+        <p class="text-sm font-semibold dark:text-white">Moni Roy</p>
+        <p class="text-xs text-gray-400 dark:text-gray-500">Admin</p>
       </div>
     </div>
-  </nav>
-  
+  </div>
+</nav>
