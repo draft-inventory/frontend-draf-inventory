@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -5,13 +6,27 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [MatTableModule, MatPaginatorModule, NgFor],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = [ 'name', 'description', 'productCode', 'expirationDate', 'locationId', 'categoryId', 'quantityId', 'priceId'];
+  columnas = [
+    { titulo: "Name", name: "name" },
+    { titulo: "Description", name: "description" },
+    { titulo: "Product Code", name: "productCode" },
+    { titulo: "Expiration Date", name: "expirationDate" },
+    { titulo: "Location", name: "locationId" },
+    { titulo: "Category", name: "categoryId" },
+    { titulo: "Quantity", name: "quantityId" },
+    { titulo: "Price", name: "priceId" }
+  ];
+
+  // displayedColumns se genera dinámicamente a partir del array "columnas"
+  displayedColumns: string[] = this.columnas.map(c => c.name);
+
+
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

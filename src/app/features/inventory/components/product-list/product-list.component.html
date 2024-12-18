@@ -1,62 +1,21 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
-
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <!-- Generamos las columnas dinámicamente -->
+    <ng-container *ngFor="let columna of columnas" [matColumnDef]="columna.name">
+      <th mat-header-cell *matHeaderCellDef> {{columna.titulo}} </th>
+      <td mat-cell *matCellDef="let element">
+        {{element[columna.name]}}
+      </td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> description </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="productCode">
-      <th mat-header-cell *matHeaderCellDef> Product Code </th>
-      <td mat-cell *matCellDef="let element"> {{element.productCode}} </td>
-    </ng-container>
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="expirationDate">
-      <th mat-header-cell *matHeaderCellDef> Expiration Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.expirationDate}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="locationId">
-      <th mat-header-cell *matHeaderCellDef> Location  </th>
-      <td mat-cell *matCellDef="let element"> {{element.locationId}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="categoryId">
-      <th mat-header-cell *matHeaderCellDef> Category </th>
-      <td mat-cell *matCellDef="let element"> {{element.categoryId}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="quantityId">
-      <th mat-header-cell *matHeaderCellDef> Quantity </th>
-      <td mat-cell *matCellDef="let element"> {{element.quantityId}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="priceId">
-      <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.priceId}} </td>
-    </ng-container>
-
-
+    <!-- Fila de encabezados -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Fila de datos -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
