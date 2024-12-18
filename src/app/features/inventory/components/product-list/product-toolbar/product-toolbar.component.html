@@ -1,0 +1,22 @@
+<div class=" flex justify-between">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Buscar</mat-label>
+    <input matInput placeholder="Filter" value="">
+  </mat-form-field>
+
+  <div class="flex flex-row justify-between align-baseline">
+    <button mat-button (click)="openDialog()">Add stock</button>
+    <button mat-button>Import</button>
+    <button mat-button>Export</button>
+    <mat-form-field>
+      <mat-label>Export</mat-label>
+      <mat-select>
+        <mat-option >pdf</mat-option>
+        <mat-option >excel</mat-option>
+        <mat-option >csv</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
