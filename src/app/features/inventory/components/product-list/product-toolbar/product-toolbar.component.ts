@@ -1,26 +1,35 @@
-import { Component } from '@angular/core';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {MatButton} from '@angular/material/button';
-import {MatOption, MatSelect} from '@angular/material/select';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-product-toolbar',
   imports: [
     MatFormField,
-    MatInput,
-    MatButton,
-    MatSelect,
-    MatOption,
-    MatLabel
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   templateUrl: './product-toolbar.component.html',
   standalone: true,
   styleUrl: './product-toolbar.component.css'
 })
 export class ProductToolbarComponent {
+  // Mandamos el valor del input al padre
+  @Output() filterChange = new EventEmitter<string>();
 
   openDialog() {
 
+  }
+
+  onFilterChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.filterChange.emit(inputElement.value);
+    }
   }
 }

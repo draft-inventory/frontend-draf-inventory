@@ -1,8 +1,7 @@
-<div class=" flex justify-between">
-
+<div class="flex justify-between">
   <mat-form-field class="example-full-width">
     <mat-label>Buscar</mat-label>
-    <input matInput placeholder="Filter" value="">
+    <input matInput placeholder="Filter" (input)="onFilterChange($event)">
   </mat-form-field>
 
   <div class="flex flex-row justify-between align-baseline">
@@ -12,11 +11,10 @@
     <mat-form-field>
       <mat-label>Export</mat-label>
       <mat-select>
-        <mat-option >pdf</mat-option>
-        <mat-option >excel</mat-option>
-        <mat-option >csv</mat-option>
+        <mat-option>pdf</mat-option>
+        <mat-option>excel</mat-option>
+        <mat-option>csv</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-
 </div>

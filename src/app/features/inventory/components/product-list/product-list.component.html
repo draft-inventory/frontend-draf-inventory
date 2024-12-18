@@ -1,7 +1,7 @@
 <div class="mat-elevation-z8 w-full h-screen bg-[#1B2431] px-5">
   <h2 class="font-bold text-white text-3xl py-10">Productos Stock</h2>
 
-  <app-product-toolbar></app-product-toolbar>
+  <app-product-toolbar (filterChange)="applyFilter($event)"></app-product-toolbar>
 
   <table mat-table [dataSource]="dataSource" class="product-tables">
     @for(column of columnas; track column.name) {

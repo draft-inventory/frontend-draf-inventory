@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatIconButton} from '@angular/material/button';
-import {ProductToolbarComponent} from './product-toolbar/product-toolbar.component';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatIconButton } from '@angular/material/button';
+import { ProductToolbarComponent } from './product-toolbar/product-toolbar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
@@ -12,6 +13,7 @@ import {ProductToolbarComponent} from './product-toolbar/product-toolbar.compone
     MatPaginatorModule,
     ProductToolbarComponent,
     MatIconButton,
+    CommonModule,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
@@ -41,6 +43,17 @@ export class ProductListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  ngOnInit() {
+    //  Filtro sólo en  la columna 'name'
+    this.dataSource.filterPredicate = (data: PeriodicElement, filter: string) => {
+      return data.name.toLowerCase().includes(filter.toLowerCase());
+    };
+  }
+
+  applyFilter(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
+  }
 }
 
 export interface PeriodicElement {
@@ -58,7 +71,7 @@ export interface PeriodicElement {
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: '1',
-    name: 'Product 1',
+    name: 'Laptop',
     description: 'Description of Product 1',
     productCode: 'P001',
     expirationDate: new Date('2024-12-31'),
@@ -69,7 +82,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
   {
     id: '2',
-    name: 'Product 2',
+    name: 'Celular',
     description: 'Description of Product 2',
     productCode: 'P002',
     expirationDate: new Date('2025-06-30'),
@@ -80,7 +93,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
   {
     id: '3',
-    name: 'Product 3',
+    name: 'Monitor',
     description: 'Description of Product 3',
     productCode: 'P003',
     expirationDate: new Date('2023-11-15'),
@@ -91,7 +104,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
   {
     id: '4',
-    name: 'Product 4',
+    name: 'Mause',
     description: 'Description of Product 4',
     productCode: 'P004',
     expirationDate: new Date('2024-03-10'),
@@ -102,7 +115,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
   {
     id: '5',
-    name: 'Product 5',
+    name: 'Teclado',
     description: 'Description of Product 5',
     productCode: 'P005',
     expirationDate: new Date('2025-01-20'),
