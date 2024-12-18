@@ -1,3 +1,47 @@
 table {
   width: 100%;
+  border: 2px solid transparent;
+}
+
+.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
+  background-color: #323D4E;
+  color: white;
+}
+
+.mat-mdc-cell.mdc-data-table__cell.cdk-cell {
+  background-color: #273142;
+  color: white;
+}
+
+mat-paginator {
+  background-color: #323D4E;
+  color: white;
+  border-bottom-left-radius: 20px;  /* Redondear esquina inferior izquierda del paginador */
+  border-bottom-right-radius: 20px; /* Redondear esquina inferior derecha del paginador */
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #1b1d27;
+}
+
+.product-tables {
+  border: 1px solid #273142;
+  border-top-left-radius: 10px;   /* Redondear esquina superior izquierda de la tabla */
+  border-top-right-radius: 10px;  /* Redondear esquina superior derecha de la tabla */
+  overflow: hidden;               /* Evitar que el contenido sobresalga */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agregar sombra si se desea */
+}
+
+.product-tables .mat-header-cell,
+.product-tables .mat-cell {
+  border-radius: 0px; /* Asegurar que las celdas no tengan bordes redondeados */
+}
+
+.product-tables .mat-header-row,
+.product-tables .mat-row {
+  border-radius: 0px; /* Asegurar que las filas no tengan bordes redondeados */
+}
+.mat-mdc-table {
+
+  background-color: transparent;
 }
