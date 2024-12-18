@@ -1,12 +1,18 @@
-import { NgFor } from '@angular/common';
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatIconButton} from '@angular/material/button';
+import {ProductToolbarComponent} from './product-toolbar/product-toolbar.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, NgFor],
+  imports: [
+    MatTableModule,
+    MatPaginatorModule,
+    ProductToolbarComponent,
+    MatIconButton,
+  ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -20,7 +26,8 @@ export class ProductListComponent implements AfterViewInit {
     { titulo: "Location", name: "locationId" },
     { titulo: "Category", name: "categoryId" },
     { titulo: "Quantity", name: "quantityId" },
-    { titulo: "Price", name: "priceId" }
+    { titulo: "Price", name: "priceId" },
+    { titulo: "Actions", name: "actions" }
   ];
 
   // displayedColumns se genera dinámicamente a partir del array "columnas"
