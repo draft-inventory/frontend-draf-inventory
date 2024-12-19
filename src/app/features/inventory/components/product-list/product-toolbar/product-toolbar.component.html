@@ -10,10 +10,11 @@
     <button mat-button>Export</button>
     <mat-form-field>
       <mat-label>Export</mat-label>
-      <mat-select>
-        <mat-option>pdf</mat-option>
-        <mat-option>excel</mat-option>
-        <mat-option>csv</mat-option>
+      <mat-select (selectionChange)="exportData($event.value)">
+        <mat-option value="Imprimir">Imprimir</mat-option>
+        <mat-option value="Pdf">Pdf</mat-option>
+        <mat-option value="Excel">Excel</mat-option>
+        <mat-option value="CSV">CSV</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

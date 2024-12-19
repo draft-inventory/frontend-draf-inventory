@@ -1,23 +1,25 @@
 <div class="mat-elevation-z8 w-full h-screen bg-[#1B2431] px-5">
   <h2 class="font-bold text-white text-3xl py-10">Productos Stock</h2>
 
-  <app-product-toolbar (filterChange)="applyFilter($event)"></app-product-toolbar>
+  <app-product-toolbar (filterChange)="applyFilter($event)" [dataSource]="dataSource"
+    [columnsForExport]="columnsForExport">
+  </app-product-toolbar>
 
   <table mat-table [dataSource]="dataSource" class="product-tables">
     @for(column of columnas; track column.name) {
-      <ng-container matColumnDef="{{column.name}}">
-        <th mat-header-cell *matHeaderCellDef> {{column.titulo}} </th>
-        <td mat-cell *matCellDef="let row">
-          <ng-container>
-            @if(column.name === 'actions') {
-              <button mat-icon-button> ✏️ </button>
-              <button mat-icon-button> 🚮 </button>
-            } @else {
-              {{row[column.name]}}
-            }
-          </ng-container>
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="{{column.name}}">
+      <th mat-header-cell *matHeaderCellDef> {{column.titulo}} </th>
+      <td mat-cell *matCellDef="let row">
+        <ng-container>
+          @if(column.name === 'actions') {
+          <button mat-icon-button> ✏️ </button>
+          <button mat-icon-button> 🚮 </button>
+          } @else {
+          {{row[column.name]}}
+          }
+        </ng-container>
+      </td>
+    </ng-container>
     }
 
     <!-- Fila de encabezados -->

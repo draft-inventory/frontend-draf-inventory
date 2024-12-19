@@ -35,8 +35,12 @@ export class ProductListComponent implements AfterViewInit {
   // displayedColumns se genera dinámicamente a partir del array "columnas"
   displayedColumns: string[] = this.columnas.map(c => c.name);
 
-
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  // Creamos las columnas para exportar
+  columnsForExport = this.columnas
+    .filter(c => c.name !== 'actions')
+    .map(c => ({ header: c.titulo, dataKey: c.name }));
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
