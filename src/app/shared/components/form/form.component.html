@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
+  <div *ngFor="let field of fields">
+    <!-- Input fields -->
+    <mat-form-field *ngIf="field.type !== 'textarea'" class="example-full-width">
+      <mat-label>{{ field.label }}</mat-label>
+      <input
+        matInput
+        [type]="field.type"
+        [formControlName]="field.name"
+        [placeholder]="field.placeholder|| '' "
+      />
+      <mat-error *ngIf="form.get(field.name)?.invalid"/>
+    </mat-form-field>
+
+    <!-- Textarea fields -->
+    <mat-form-field *ngIf="field.type === 'textarea'" class="example-full-width">
+      <mat-label>{{ field.label }}</mat-label>
+      <textarea
+        matInput
+        [formControlName]="field.name"
+        [placeholder]="field.placeholder || '' "
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
+      Submit
+    </button>
+  </div>
+</form>
