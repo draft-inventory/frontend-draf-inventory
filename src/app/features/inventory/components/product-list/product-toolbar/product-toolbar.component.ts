@@ -11,6 +11,7 @@ import { saveAs } from 'file-saver';
 import { MatTableDataSource } from '@angular/material/table';
 import {DialogComponent} from '../../../../../shared/components/dialog/dialog.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {Validators} from '@angular/forms';
 
 export interface PeriodicElement {
   id: string;
@@ -51,14 +52,80 @@ export class ProductToolbarComponent {
 constructor(public  dialog: MatDialog) { }
 
   openDialog(): void {
-    this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: {
-        title: 'Título 1323123',
-        content: 'Contenido 123123123',
+        title: 'Add Stock',
+        fields: [
+          {
+            name: 'name',
+            label: 'Name',
+            type: 'text',
+            placeholder: 'Enter the product name',
+            validators: [Validators.required],
+          },
+          {
+            name: 'description',
+            label: 'Description',
+            type: 'textarea',
+            placeholder: 'Enter the product description',
+            validators: [Validators.required],
+          },
+          {
+            name: 'productCode',
+            label: 'Product Code',
+            type: 'text',
+            placeholder: 'Enter the product code',
+            validators: [Validators.required],
+          },
+          {
+            name: 'expirationDate',
+            label: 'Expiration Date',
+            type: 'date',
+            placeholder: 'Select the expiration date',
+            validators: [Validators.required],
+          },
+          {
+            name: 'locationId',
+            label: 'Location',
+            type: 'text',
+            placeholder: 'Enter the location ID',
+            validators: [Validators.required],
+          },
+          {
+            name: 'categoryId',
+            label: 'Category',
+            type: 'text',
+            placeholder: 'Enter the category ID',
+            validators: [Validators.required],
+          },
+          {
+            name: 'quantityId',
+            label: 'Quantity',
+            type: 'number',
+            placeholder: 'Enter the quantity',
+            validators: [Validators.required, Validators.min(1)],
+          },
+          {
+            name: 'priceId',
+            label: 'Price',
+            type: 'number',
+            placeholder: 'Enter the price',
+            validators: [Validators.required, Validators.min(0)],
+          },
+
+        ]
 
       },
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Form submitted with data:', result);
+      }
     });
   }
+
 
   onFilterChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
