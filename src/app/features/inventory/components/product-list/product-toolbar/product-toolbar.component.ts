@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import {Component, EventEmitter, Output, Input, inject, Inject} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,8 @@ import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { MatTableDataSource } from '@angular/material/table';
+import {DialogComponent} from '../../../../../shared/components/dialog/dialog.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 export interface PeriodicElement {
   id: string;
@@ -31,6 +33,7 @@ export interface PeriodicElement {
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
+    MatDialogModule,
   ],
   templateUrl: './product-toolbar.component.html',
   styleUrls: ['./product-toolbar.component.css']
@@ -44,8 +47,17 @@ export class ProductToolbarComponent {
   // Recibimos las columnas para exportar
   @Input() columnsForExport!: { header: string; dataKey: string }[];
 
-  openDialog() {
-    // Implementación del diálogo (opcional)
+
+constructor(public  dialog: MatDialog) { }
+
+  openDialog(): void {
+    this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Título 1323123',
+        content: 'Contenido 123123123',
+
+      },
+    });
   }
 
   onFilterChange(event: Event) {
