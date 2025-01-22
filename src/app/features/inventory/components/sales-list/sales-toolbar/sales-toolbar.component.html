@@ -1,0 +1,49 @@
+<div class="flex justify-around">
+
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="date">Date</button>
+    <mat-menu #date="matMenu">
+      <button mat-menu-item  >
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar ></mat-calendar>
+        </mat-card>
+      </button>
+    </mat-menu>
+  </div>
+
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Buscar</mat-label>
+      <input matInput placeholder="Filter" (input)="onFilterChange($event)">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="productType">Order Type</button>
+    <mat-menu #productType="matMenu">
+        @for (element of filterOptions.productsTypes; track element) {
+          <ng-container>
+            <button mat-menu-item  >
+              {{element}}
+            </button>
+          </ng-container>
+        }
+    </mat-menu>
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="orderStatus">Order Status</button>
+    <mat-menu #orderStatus="matMenu">
+      @for (element of filterOptions.ordersStatus; track element) {
+        <ng-container>
+          <button mat-menu-item  >
+            {{element}}
+          </button>
+        </ng-container>
+      }
+    </mat-menu>
+  </div>
+
+  <button mat-raised-button>Reset</button>
+</div>
+
