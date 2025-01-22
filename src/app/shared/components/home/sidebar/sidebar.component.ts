@@ -18,7 +18,7 @@ export class SidebarComponent {
     { name: 'Categorias', icon: '📂', route: '#' },
     { name: 'Stock', icon: '📊', route: '#' },
     { name: 'Analisis', icon: '📈', route: '#' },
-    { name: 'Ventas', icon: '💸', route: '#' },
+    { name: 'Ventas', icon: '💸', route: '/products/sales' },
     { name: 'Proveedores', icon: '👨‍🌾', route: '#'},
     { name: 'Configuración', icon: '⚙️', route: '#' },
     { name: 'Cerrar Sesión', icon: '🚪', route: '#' },
